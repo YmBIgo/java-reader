@@ -68,6 +68,6 @@ The LLM will suggest important functions within the current function. You then s
 
 ## Release Notes
 
-#### 1.0.0
+#### 1.0.2
 
 JavaReader's initial release
