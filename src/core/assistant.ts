@@ -24,6 +24,7 @@ import {
 } from "./prompt";
 import pWaitFor from "p-wait-for";
 import { is7wordString } from "./util/number";
+import path from "path";
 
 let client: JavaLanguageClient | null;
 
@@ -147,7 +148,10 @@ export class JavaReader {
   ) {
     const jdtls: vscodelc.Executable = {
       command: jdtlsPath,
-      args: ["-data", javaProjectPath],
+      args: [
+        "-data", javaProjectPath,
+        "-classpathFile", path.join(javaProjectPath, ".classpath")
+      ],
       options: {
         cwd: javaProjectPath,
         shell: false
@@ -157,6 +161,9 @@ export class JavaReader {
     const clientOptions: vscodelc.LanguageClientOptions = {
       documentSelector: jdtlsDocumentSelector,
       initializationOptions: {
+      },
+      synchronize: {
+        fileEvents: vscode.workspace.createFileSystemWatcher("**/.classpath")
       },
       revealOutputChannelOn: vscodelc.RevealOutputChannelOn.Never,
     };
@@ -523,11 +530,11 @@ ${functionContent}
       } 
       return hc
     });
+    this.historyHanlder?.addHistory(newHistoryChoices);
+    this.jumpToCode(removeFilePrefixFromFilePath(newFile), newFunctionContent);
     const comment = await this.askSocket("If you have any comments write it down.\nIf you have no comment please just write 'no comment'.");
     const newMessages = this.addMessages(`User Enter ${comment.ask}`, "user");
     this.sendState(newMessages);
-    this.historyHanlder?.addHistory(newHistoryChoices);
-    this.jumpToCode(removeFilePrefixFromFilePath(newFile), newFunctionContent);
     this.historyHanlder?.choose(resultNumber, newFunctionContent, comment.ask);
     this.saySocket(
       `LLM is searching ${newFile}@${newLine}:${newCharacter}.`
