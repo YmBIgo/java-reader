@@ -68,6 +68,10 @@ The LLM will suggest important functions within the current function. You then s
 
 ## Release Notes
 
+#### 1.0.3
+
+Interactively jump when use history run
+
 #### 1.0.2
 
 JavaReader's initial release
