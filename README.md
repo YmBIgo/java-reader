@@ -36,6 +36,8 @@ mvn eclipse:eclipse
 ./gradlew eclipse
 ```
 
+.classpath file should be located at project's root path.
+
 2. Install VS Code
 
 Please install version 1.100.0 or later of Visual Studio Code.
@@ -50,7 +52,7 @@ https://marketplace.visualstudio.com/items?itemName=coffeecupjapan.java-reader&s
 Once downloaded, open the Command Palette with Command + Shift + P, and click “Open Java Reader Tab”. If a tab opens on the right side, it was successful.
 
 5. Configure settings
-Provide the path to jdtls and select your preferred LLM (OpenAI, Claude, or Plamo).
+Provide the "path to jdtls" and "Java project path" and select your "preferred LLM (OpenAI, Claude, Gemini, or Plamo)".
 
 6. Start exploration in the chat UI
 
@@ -67,6 +69,10 @@ This will initiate the analysis process.
 The LLM will suggest important functions within the current function. You then select which one to explore next. This process repeats as long as you like, allowing you to explore deeper step by step.
 
 ## Release Notes
+
+#### 1.0.4
+
+Add comment function
 
 #### 1.0.3
 
