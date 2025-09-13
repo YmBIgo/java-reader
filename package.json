@@ -69,6 +69,7 @@
     "ajv": "^8.17.1",
     "bufferutil": "^4.0.9",
     "fs": "^0.0.1-security",
+    "glob": "^11.0.3",
     "openai": "^5.0.1",
     "p-wait-for": "^5.0.2",
     "utf-8-validate": "^6.0.5",

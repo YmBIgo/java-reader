@@ -16,6 +16,7 @@ export class JavaLLMReaderProvider implements vscode.WebviewViewProvider {
   private allowedMessageType = [
     "Init",
     "InitHistory",
+    "InitFolder",
     "Reset",
     "Ask",
     "Jdtls",
@@ -188,6 +189,14 @@ export class JavaLLMReaderProvider implements vscode.WebviewViewProvider {
           } catch (e) {
             console.error(e);
           }
+          break;
+        case "InitFolder":
+          let folder = message.folder ?? "";
+          const folderPurpose = message.purpose ?? "";
+          if (folder[folder.length-1] === "/") folder = folder.slice(0, folder.length-1)
+          //
+          console.log("Folder Task Start", folder, folderPurpose);
+          javaReaderAssitant?.runFirstTaskWithFolder(folder, folderPurpose);
           break;
         case "Reset":
           javaReaderAssitant?.doGC();

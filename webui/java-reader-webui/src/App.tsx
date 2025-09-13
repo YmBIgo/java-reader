@@ -12,7 +12,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([
     {
       type: "say",
-      content: `Please enter the "file path you want to search," the "one-line definition of the function to search," and the "purpose."`,
+      content: `Please enter the "file path you want to search," the "the first line of the function to search," and the "purpose."`,
       time: Date.now()
     },
     {
