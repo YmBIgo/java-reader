@@ -150,7 +150,6 @@ export class JavaReader {
       command: jdtlsPath,
       args: [
         "-data", javaProjectPath,
-        "-classpathFile", path.join(javaProjectPath, ".classpath")
       ],
       options: {
         cwd: javaProjectPath,
@@ -161,6 +160,28 @@ export class JavaReader {
     const clientOptions: vscodelc.LanguageClientOptions = {
       documentSelector: jdtlsDocumentSelector,
       initializationOptions: {
+        // settings: vscode.workspace.getConfiguration().get("java"),
+        // extendedClientCapabilities: {
+        //   classFileContentsSupport: true,
+        //   overrideMethodsPromptSupport: false,
+        //   hashCodeEqualsPromptSupport: false,
+        //   advancedOrganizeImportsSupport: false,
+        //   generateToStringPromptSupport: false,
+        //   advancedGenerateAccessorsSupport: false,
+        //   generateConstructorsPromptSupport: false,
+        //   generateDelegateMethodsPromptSupport: false,
+        //   advancedExtractRefactoringSupport: false,
+        //   inferSelectionSupport: [],
+        //   moveRefactoringSupport: false,
+        //   clientHoverProvider: false,
+        //   clientDocumentSymbolProvider: false,
+        //   gradleChecksumWrapperPromptSupport: false,
+        //   resolveAdditionalTextEditsSupport: false,
+        //   advancedIntroduceParameterRefactoringSupport: false,
+        //   actionableRuntimeNotificationSupport: true,
+        //   shouldLanguageServerExitOnShutdown: true,
+        //   onCompletionItemSelectedCommand: 'editor.action.triggerParameterHints',
+        // },
       },
       synchronize: {
         fileEvents: vscode.workspace.createFileSystemWatcher("**/.classpath")
